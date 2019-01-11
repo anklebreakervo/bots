@@ -13,6 +13,7 @@ from Info import keys
 import datetime as dt
 import time
 
+
 def booking():
     """
     Uses the desired time slots and login credentials in info.py to
@@ -45,15 +46,18 @@ def booking():
     except Exception:
         print('Specified rooms are currently booked or unavailable. Try entering a different time slot.')
         driver.quit()
+        exit()
 
     driver.find_element_by_xpath('//*[@id="rm_tc_cont"]').click()  # Continue Button
     driver.find_element_by_xpath('//*[@id="s-lc-rm-sub"]').click()  # Submit Time Slots Button
+    print('Submitting reservation for desired time slots...')
 
     """
     Information Release Window
     """
     element_present = ec.presence_of_element_located((By.XPATH, '/html/body/form/div/div[2]/p[2]/input[2]'))
     WebDriverWait(driver, keys['timeout_sec']).until(element_present).click()  # Information Release Window
+    print('Accepting information release terms and agreement...')
     driver.find_element_by_xpath('//*[@id="s-lc-rm-sub"]').click()  # Accept Button
 
     driver.find_element_by_xpath('//*[@id="s-lc-rm-sub"]').click()  # Submit Booking button
@@ -80,20 +84,40 @@ def cal_net_authentication():
 
 
 def login_prep():
+    """
+    Logs into Berkeley email and Cal Net account.
+    """
     driver.get('https://accounts.google.com/ServiceLogin/identifier?service=mail&continue=https%3A%2F%2Fmail.'
                'google.com%2Fmail%2F&flowName=GlifWebSignIn&flowEntry=AddSession')
+    print('Logging into your Berkeley email...')
     driver.find_element_by_xpath('//*[@id="identifierId"]').send_keys(keys['berkeley_email'])
     driver.find_element_by_xpath('//*[@id="identifierNext"]/content/span').click()
     cal_net_authentication()
+    print('Authentication successful.')
     element_present = ec.presence_of_element_located((By.XPATH, '//*[@id="view_container"]/div/div/div[2]/div/'
                                                                 'div[2]/div/div[1]/div/content/span'))
     WebDriverWait(driver, keys['timeout_sec']).until(element_present).click()
 
 
+def waiting_period():
+    """
+    @source Learned how to use Python's built-in datetime module
+    https://www.youtube.com/watch?v=eirjjyP2qcQ
+    """
+    curr_time = dt.datetime(dt.datetime.now().year, dt.datetime.now().month, dt.datetime.now().day,
+                            dt.datetime.now().hour, dt.datetime.now().minute, dt.datetime.now().second)
+    des_time = dt.datetime(keys['desired_year'], keys['desired_month'], keys['desired_day'], keys['desired_hour'],
+                           keys['desired_minute'], keys['desired_second'])
+    change_in_time = (des_time - curr_time).total_seconds()
+    if change_in_time < 0:
+        print('Please enter a valid time.')
+        exit()
+    print('Program starting in {} second(s).'.format(change_in_time))
+    time.sleep(change_in_time + 10.0)  # 10 second buffer for library page to match system time.
+
+
 if __name__ == '__main__':
-    # while dt.datetime.now().minute <= 9:
-    #     print('Waiting... Current time: ' + str(dt.datetime.now().time()))
-    #     time.sleep(5)
+    waiting_period()
     start_time = time.time()
     driver = webdriver.Chrome()
     login_prep()
