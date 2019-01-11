@@ -1,7 +1,7 @@
 # bots
-Bots created with Python to solve automated tasks.
+Bots written in Python to automate various tasks.
 
-Bots created so far:
-	- Bot created for automatically reserving study rooms in Moffitt Library. (IN PROGRESS)
-	- Bot created to automate Club Penguin Thin Ice mini-game. (COMPLETED)
-	- Bot created to automate Pomodoro time technique. (COMPLETED)
+Bots created so far:\
+	&nbsp;&nbsp;&nbsp;&nbsp;- Bot that automates reserving study rooms on an online library booking system. (COMPLETED)\
+	&nbsp;&nbsp;&nbsp;&nbsp;- Bot that infintely plays an online browser game. (COMPLETED)\
+	&nbsp;&nbsp;&nbsp;&nbsp;- Bot created to automate the Pomodoro Technique — a time management method. (COMPLETED)\
