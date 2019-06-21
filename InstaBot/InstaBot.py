@@ -9,13 +9,9 @@ characters = ['a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g', '
               '2', '3', '4', '5', '6', '7', '9', '!', '@', "#", "$", "%", "^", "&", '*', "(", ")"]
 domains = ['@gmail.com', '@yahoo.com', '@hotmail.com', '@outlook.com', '@inbox.com', '@mail.com', '@aol.com',
            '@icloud.com', '@zoho.com', '@yandex.com', '@protonmail.com']
-emails = []
-names = []
-usernames = []
-passwords = []
 
 
-def generate_random_name(names):
+def generate_random_name():
     wb = openpyxl.load_workbook('names.xlsx')
     sheet = wb.get_sheet_by_name('Sheet1')
     rand_int_first = random.randint(1, sheet.max_row)
@@ -24,25 +20,21 @@ def generate_random_name(names):
     first_name = sheet.cell(row=rand_int_first, column=1).value
     middle_name = sheet.cell(row=rand_int_middle, column=1).value
     last_name = sheet.cell(row=rand_int_last, column=1).value
-    full_name = first_name + ' ' + middle_name + ' ' + last_name
-    names += [full_name]
     return [first_name, middle_name, last_name]
 
 
-def generate_random_email(emails, domains, first, middle, last):
+def generate_random_email(domains, first, middle, last):
     rand_int = random.randint(0, len(domains) - 1)
     email = last.lower() + '_' + middle.lower() + '_' + first.lower() + str(random.randint(100, 1000)) + domains[rand_int]
-    emails += [email]
     return email
 
 
-def generate_random_password(passwords, characters):
+def generate_random_password(characters):
     length = random.randint(6, 11)
     password = ''
     for i in range(length):
         rand_int = random.randint(0, len(characters) - 1)
         password += characters[rand_int]
-    passwords.append(password)
     return password
 
 
@@ -62,20 +54,19 @@ if __name__ == '__main__':
     seen = False
 
     while True:
-        random_person = generate_random_name(names)
+        random_person = generate_random_name()
         random_person_name = name_list_to_string(random_person)
         print(random_person_name)
-        random_email = generate_random_email(emails, domains, random_person[0], random_person[1], random_person[2])
+        random_email = generate_random_email(domains, random_person[0], random_person[1], random_person[2])
         print(random_email)
-        random_password = generate_random_password(passwords, characters)
+        random_password = generate_random_password(characters)
         print(random_password)
 
         driver.find_element_by_name('emailOrPhone').send_keys(random_email)
         driver.find_element_by_name('fullName').send_keys(random_person_name)
         driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[5]/div/div[2]/div/button/span').click()
-        username = driver.find_element_by_name('username').get_attribute('value')
-        print(username)
-        usernames.append(username)
+        random_username = driver.find_element_by_name('username').get_attribute('value')
+        print(random_username)
         driver.find_element_by_name('password').send_keys(random_password)
         driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[7]/div/button').click()
 
@@ -83,7 +74,7 @@ if __name__ == '__main__':
             driver.find_element_by_xpath('/html/body/div[3]/div/div/div[3]/button[2]').click()
             seen = True
 
-        driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input').send_keys('iseojun21')
+        driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/input').send_keys('anklebreakervo')
         time.sleep(1)
         driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/div[2]/div[2]/div/a[1]/div').click()
         driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/header/section/div[1]/button').click()
@@ -96,13 +87,8 @@ if __name__ == '__main__':
         wb = openpyxl.load_workbook('accounts.xlsx')
         sheet = wb.active
         current_row = sheet.max_row + 1
-        for j in range(len(names)):
-            sheet.cell(row=current_row, column=1).value = emails[j]
-            sheet.cell(row=current_row, column=2).value = names[j]
-            sheet.cell(row=current_row, column=3).value = usernames[j]
-            sheet.cell(row=current_row, column=4).value = passwords[j]
-            current_row += 1
-        cols = ['A', 'B', 'C', 'D']
-        for col in cols:
-            sheet.column_dimensions[col].width = 40
+        sheet.cell(row=current_row, column=1).value = random_email
+        sheet.cell(row=current_row, column=2).value = random_person_name
+        sheet.cell(row=current_row, column=3).value = random_username
+        sheet.cell(row=current_row, column=4).value = random_password
         wb.save('accounts.xlsx')
