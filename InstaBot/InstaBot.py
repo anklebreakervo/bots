@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
         driver.find_element_by_name('emailOrPhone').send_keys(random_email)
         driver.find_element_by_name('fullName').send_keys(random_person_name)
-        driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[5]/div/div[2]/div/button/span').click()
+        driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[5]/div/div/div/button/span').click()
         random_username = driver.find_element_by_name('username').get_attribute('value')
         print(random_username)
         driver.find_element_by_name('password').send_keys(random_password)
