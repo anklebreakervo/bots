@@ -4,7 +4,8 @@
     <list default="true" id="87fcbe58-7509-4bdd-8eea-dcc91f8356d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InstaBot.py" beforeDir="false" afterPath="$PROJECT_DIR$/InstaBot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/accounts.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chromedriver.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chromedriver_win32.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../MoffittBot/MoffittBot.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MoffittBot/MoffittBot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MoffittBot/chromedriver.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../MoffittBot/chromedriver_win32.zip" beforeDir="false" />
@@ -21,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/InstaBot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="65" column="77" selection-start-line="65" selection-start-column="77" selection-end-line="65" selection-end-column="77" />
+            <state relative-caret-position="319">
+              <caret line="61" column="107" lean-forward="true" selection-start-line="61" selection-start-column="107" selection-end-line="61" selection-end-column="107" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -147,13 +148,13 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1320" height="784" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15260737" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15260737" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32838038" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32838038" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -216,8 +217,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/InstaBot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="77" selection-start-line="65" selection-start-column="77" selection-end-line="65" selection-end-column="77" />
+        <state relative-caret-position="319">
+          <caret line="61" column="107" lean-forward="true" selection-start-line="61" selection-start-column="107" selection-end-line="61" selection-end-column="107" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>

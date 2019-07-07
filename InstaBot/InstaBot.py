@@ -48,7 +48,9 @@ def name_list_to_string(list):
 if __name__ == '__main__':
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--incognito")
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    # When creating an instance of Chrome webdriver, be sure to set the executable_path to where
+    # chromedriver.exe is located on your computer.
+    driver = webdriver.Chrome(executable_path='C:/Users/Andrew Vo/Desktop/bots/chromedriver/chromedriver.exe', chrome_options=chrome_options)
     driver.implicitly_wait(10)
     driver.get('https://www.instagram.com/')
     seen = False
